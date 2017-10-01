@@ -1,11 +1,12 @@
 package ua.nure.kn156.muhumian;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class User {
 	private Long id;
 	private String firstName;
-	private String latsName;
+	private String lastName;
 	private Date dateOfBirthd;
 	
 	public Long getId() {
@@ -20,16 +21,28 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getLatsName() {
-		return latsName;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLatsName(String latsName) {
-		this.latsName = latsName;
+	public void setLastName(String latsName) {
+		this.lastName = latsName;
 	}
 	public Date getDateOfBirthd() {
 		return dateOfBirthd;
 	}
 	public void setDateOfBirthd(Date dateOfBirthd) {
 		this.dateOfBirthd = dateOfBirthd;
+	}
+	
+	public String getFullName() {
+		if (getLastName() == null || getFirstName() == null) throw new IllegalArgumentException("FirstName or LastName is null");
+		return new StringBuilder(getLastName()).append(", ").append(getFirstName()).toString();
+	}
+	public long getAge() {
+		Calendar calendar = Calendar.getInstance();
+		long currentYear = calendar.get(Calendar.YEAR);
+		calendar.setTime(getDateOfBirthd());
+		long yearOfBirth = calendar.get(Calendar.YEAR);
+		return currentYear - yearOfBirth;
 	}
 }
