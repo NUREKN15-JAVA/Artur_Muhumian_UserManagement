@@ -1,14 +1,11 @@
 package ua.nure.kn156.muhumian;
 
-import static org.junit.Assert.*;
-
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Before;
-import org.junit.Test;
 
 import junit.framework.TestCase;
+import ua.nure.kn156.muhumian.User;
 
 public class UserTest extends TestCase {
 	private static final int AGE = 20;
